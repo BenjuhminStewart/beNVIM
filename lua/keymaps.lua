@@ -1,6 +1,11 @@
 -- [[ Basic Keymaps ]]
 -- See `:help vim.keymap.set()`
 
+-- Macro Keybindings
+vim.keymap.set('n', '<leader>mr', 'qq', { desc = '[M]acro [R]ecord' })
+vim.keymap.set('n', '<leader>me', 'q', { desc = '[M]acro [E]nd' })
+vim.keymap.set('n', '<leader>mu', '@q', { desc = '[M]acro [U]se' })
+
 -- Unbind space for normal and visual mode
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
@@ -17,7 +22,7 @@ vim.keymap.set('n', '<leader>f', ':Format<CR>')
 vim.keymap.set('n', '<leader>rc', ':RunCode<CR>', { desc = '[R]un [C]ode' })
 
 -- Open Terminal
-vim.keymap.set('n', '<leader>t', ':ToggleTerm size=12 direction=horizontal<CR>', { desc = 'Toggle [T]erminal' })
+vim.keymap.set('n', '<leader>tt', ':ToggleTerm size=12 direction=horizontal<CR>', { desc = '[T]oggle [T]erminal' })
 
 -- ThePrimeagen Keybinds
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- Move selected text down

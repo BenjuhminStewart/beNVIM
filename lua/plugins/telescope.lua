@@ -3,16 +3,6 @@
 
 vim.keymap.set("n", "<leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true })
 
-vim.api.nvim_create_autocmd("User", {
-  pattern = "TelescopePreviewerLoaded",
-  callback = function(args)
-    if args.data.filetype ~= "help" then
-      vim.bo.number = true
-    elseif args.data.bufname:match("*.csv") then
-      vim.bo.wrap = false
-    end
-  end,
-})
 
 -- find and get prompt buffer
 TP = function()
@@ -22,7 +12,18 @@ TP = function()
   return TelescopeGlobalState[prompt_buf].picker
 end
 
+vim.cmd([[
+  highlight TelescopePromptNormal guifg=#F1F1F1 guibg=#434343
+  highlight TelescopePromptBorder guifg=#434343 guibg=#434343
+  highlight TelescopePromptTitle  guifg=#434343 guibg=#89D3CD
+  highlight TelescopePreviewNormal guifg=#F1F1F1 guibg=#393939
+  highlight TelescopePreviewBorder guifg=#393939 guibg=#393939
+  highlight TelescopeResultsNormal guifg=#F1F1F1 guibg=#323232
+  highlight TelescopeResultsBorder guifg=#323232 guibg=#323232
+]])
+
 require('telescope').setup {
+  preview_cutoff = 1,
   extensions = {
     file_browser = {
       grouped = true,
@@ -34,13 +35,21 @@ require('telescope').setup {
   },
   defaults = {
     borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
-    layout_strategy = "vertical",
+    theme = "center",
     layout_config = {
-      height = 0.999,
-      width = 0.999,
-      prompt_position = "top",
-      preview_height = 0.40,
+      horizontal = {
+        prompt_position = "top",
+        preview_width = 0.5,
+        border_hl = "TelescopePromptBorder",
+        preview_cutoff = 100,
+      },
     },
+    pickers = {
+      colorscheme = {
+        enable_preview = true
+      },
+    },
+    border_hl = '#ffffff',
     prompt_prefix = "  ",
     sorting_strategy = "ascending",
     cache_picker = {

@@ -168,10 +168,10 @@ return {
 	-- COLORSCHEME
 	{
 		"rebelot/kanagawa.nvim",
-		priority = 1000,
-		config = function()
-			vim.cmd.colorscheme 'onedark'
-		end,
+		-- priority = 1000,
+		-- config = function()
+		-- 	vim.cmd.colorscheme 'kanagawa'
+		-- end,
 	},
 
 	{
@@ -182,4 +182,57 @@ return {
 		-- 	vim.cmd.colorscheme 'onedark'
 		-- end,
 	},
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+	},
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		-- priority = 1000,
+		-- config = function()
+		-- 	vim.cmd.colorscheme 'catppuccin-frappe'
+		-- 	require("catppuccin").setup({
+		-- 		integrations = {
+		-- 			cmp = true,
+		-- 			telescope = false,
+		-- 		}
+		-- 	})
+		-- end,
+	},
+	{
+		"EdenEast/nightfox.nvim",
+		-- priority = 1000,
+		-- config = function()
+		-- 	vim.cmd.colorscheme 'nordfox'
+		-- end,
+	},
+	{
+		'projekt0n/github-nvim-theme',
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			require('github-theme').setup({
+				-- ...
+			})
+
+			vim.cmd('colorscheme github_dark')
+		end,
+	}
+
 }
