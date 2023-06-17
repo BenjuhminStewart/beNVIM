@@ -1,13 +1,6 @@
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 
--- gopls
-require("lspconfig").gopls.setup{
-  on_attach = function()
-    vim.keymap.set('n', 'K', vim.lsps.buf.hover, { buffer = 0, desc = 'Hover Documentation' })
-  end,
-}
-
 local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then

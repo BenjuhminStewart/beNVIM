@@ -52,7 +52,7 @@ return {
 		'lewis6991/gitsigns.nvim',
 		opts = {
 			-- See `:help gitsigns.txt`
-		signs = {
+			signs = {
 				add = { text = '+' },
 				change = { text = '~' },
 				delete = { text = '_' },
@@ -107,14 +107,13 @@ return {
 	-- requirements installed.
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
-		-- NOTE: If you are having trouble with this installation,
-		--       refer to the README for telescope-fzf-native for more instructions.
 		build = 'make',
 		cond = function()
 			return vim.fn.executable 'make' == 1
 		end,
 	},
 
+	-- TREE SITTER
 	{
 		-- Highlight, edit, and navigate code
 		'nvim-treesitter/nvim-treesitter',
@@ -123,31 +122,21 @@ return {
 		},
 		build = ':TSUpdate',
 	},
+
+	-- GitHub Copilot
 	{
 		"github/copilot.vim",
 	},
+
+	-- AUTO CLOSE TAGS
 	{
 		"m4xshen/autoclose.nvim",
 		config = function()
 			require("autoclose").setup()
 		end,
 	},
-	{
-		"dcampos/nvim-snippy",
-		config = function()
-			require('snippy').setup({
-				mappings = {
-					is = {
-						['<Tab>'] = 'expand_or_advance',
-						['<S-Tab>'] = 'previous',
-					},
-					nx = {
-						['<leader>x'] = 'cut_text',
-					},
-				},
-			})
-		end
-	},
+
+	-- CODE RUNNER
 	{
 		"CRAG666/code_runner.nvim",
 		config = function()
@@ -168,6 +157,8 @@ return {
 			})
 		end
 	},
+
+	-- TERMINAL
 	{
 		'akinsho/toggleterm.nvim',
 		version = "*",
@@ -175,4 +166,10 @@ return {
 			require('toggleterm').setup()
 		end
 	},
+
+	-- EXPLORER
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+	}
 }

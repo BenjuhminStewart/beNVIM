@@ -21,11 +21,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   { import = 'plugins.lazy' },
-  { import = 'plugins.autoformat'},
+  { import = 'plugins.autoformat' },
 }, {})
+require('plugins.lsp')
 require('options')
 require('keymaps')
 require('plugins.telescope')
 require('plugins.treesitter')
-require('plugins.lsp')
 require('plugins.completion')
