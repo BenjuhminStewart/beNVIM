@@ -2,6 +2,26 @@
 -- See `:help telescope` and `:help telescope.setup()`
 
 vim.keymap.set("n", "<leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true })
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "TelescopePreviewerLoaded",
+  callback = function(args)
+    if args.data.filetype ~= "help" then
+      vim.bo.number = true
+    elseif args.data.bufname:match("*.csv") then
+      vim.bo.wrap = false
+    end
+  end,
+})
+
+-- find and get prompt buffer
+TP = function()
+  local prompt_buf = vim.tbl_filter(function(b)
+    return vim.bo[b].filetype == "TelescopePrompt"
+  end, vim.api.nvim_list_bufs())[1]
+  return TelescopeGlobalState[prompt_buf].picker
+end
+
 require('telescope').setup {
   extensions = {
     file_browser = {
@@ -13,11 +33,28 @@ require('telescope').setup {
     },
   },
   defaults = {
+    borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+    layout_strategy = "vertical",
+    layout_config = {
+      height = 0.999,
+      width = 0.999,
+      prompt_position = "top",
+      preview_height = 0.40,
+    },
+    prompt_prefix = "  ",
+    sorting_strategy = "ascending",
+    cache_picker = {
+      num_pickers = 20,
+    },
+    dynamic_preview_title = true,
     mappings = {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
       },
+      n = {
+        ['<C-]>'] = require("telescope.actions.layout").toggle_preview
+      }
     },
   },
 }

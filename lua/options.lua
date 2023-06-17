@@ -2,6 +2,10 @@
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.numberwidth = 4
 -- Set highlight on search
 vim.o.hlsearch = false
 
@@ -10,11 +14,8 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-
 vim.opt.smartindent = true
-
--- Make line numbers default
-vim.wo.number = true
+vim.opt.scrolloff = 8
 
 -- Enable mouse mode
 vim.o.mouse = 'a'

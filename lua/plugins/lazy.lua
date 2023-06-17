@@ -62,14 +62,6 @@ return {
 		},
 	},
 
-	{
-		-- Theme inspired by Atom
-		'navarasu/onedark.nvim',
-		priority = 1000,
-		config = function()
-			vim.cmd.colorscheme 'onedark'
-		end,
-	},
 
 	{
 		-- Set lualine as statusline
@@ -171,5 +163,23 @@ return {
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-	}
+	},
+
+	-- COLORSCHEME
+	{
+		"rebelot/kanagawa.nvim",
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme 'onedark'
+		end,
+	},
+
+	{
+		-- Theme inspired by Atom
+		'navarasu/onedark.nvim',
+		-- priority = 1000,
+		-- config = function()
+		-- 	vim.cmd.colorscheme 'onedark'
+		-- end,
+	},
 }
