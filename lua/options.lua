@@ -1,7 +1,7 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
-
+vim.cmd.set('winbar=%=%m\\ %f')
 
 vim.opt.number = true
 vim.opt.relativenumber = true
