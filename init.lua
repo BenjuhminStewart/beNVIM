@@ -23,6 +23,7 @@ require('lazy').setup({
   { import = 'plugins.lazy' },
   { import = 'plugins.autoformat' },
 }, {})
+require('globals')
 require('plugins.lsp')
 require('options')
 require('keymaps')

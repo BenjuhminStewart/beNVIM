@@ -3,6 +3,8 @@
 -- See the kickstart.nvim README for more information
 
 return {
+	-- My plugins
+	{ dir = "~/.config/nvim/benjuhmin/plugins/test.nvim" },
 
 	-- Git related plugins
 	'tpope/vim-fugitive',
@@ -46,7 +48,7 @@ return {
 	},
 
 	-- Useful plugin to show you pending keybinds.
-	{ 'folke/which-key.nvim',          opts = {} },
+	{ 'folke/which-key.nvim',                            opts = {} },
 	{
 		-- Adds git releated signs to the gutter, as well as utilities for managing changes
 		'lewis6991/gitsigns.nvim',
@@ -70,7 +72,7 @@ return {
 		opts = {
 			options = {
 				icons_enabled = false,
-				theme = 'onedark',
+				theme = 'github_dark',
 				component_separators = '|',
 				section_separators = '',
 			},
