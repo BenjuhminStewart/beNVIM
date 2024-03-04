@@ -28,6 +28,7 @@ require('telescope').setup {
     file_browser = {
       grouped = true,
       initial_browser = "tree",
+      initial_mode = "normal",
       auto_depth = true,
       depth = 1,
       hijack_netrw = true,
